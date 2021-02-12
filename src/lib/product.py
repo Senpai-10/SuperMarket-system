@@ -95,26 +95,16 @@ class product:
         else: print("wrong entry")
 
     def REMOVE(self):
-        ...
+        print("enter product ( id ) or ( all|ALL )")
+        productID = input("$ ")
+        print("")
 
+        if productID == 'all' or 'ALL':
+            self.cursor.execute("select * from products")
+            for row in self.cursor.fetchall():
+                self.cursor.execute("DELETE from products where id = :id", {'id': row[0]})
 
-    def get_price(self, productID):
-        if type(productID) == int:
-            # get by id number
-            ...
-        else:
-            # get by name
-            ...
+        else: self.cursor.execute("DELETE from products where id = :id", {'id': productID})
 
-
-    def get_quantity(self, productID):
-        if type(productID) == int:
-            # get by id number
-            ...
-        else:
-            # get by name
-            ...
-
-
-
+        self.conn.commit()
 
