@@ -7,7 +7,7 @@ conn = sqlite3.connect('SuperMarket')
 cursor = conn.cursor()
 
 color = color()
-product = product(cursor)
+product = product(cursor, conn)
 
 
 
@@ -34,8 +34,29 @@ def menu():
 def main():
     menu()
     command = input(color.lightGrey("$ "))
+    
+    if command == '1':
+        # product.ABOUT()
+
+    elif command == '2':
+        product.DISPLAY_ALL()
+    
+    elif command == '3':
+        name     = input('product name     $ ')
+        price    = input('product price    $ ')
+        quantity = input('product quantity $ ')
+        product.CREATE(name=name, price=price, quantity=quantity)
+    
+    elif command == '4':
+        # product.UPDATE()
+    
+    elif command == '5':
+        # product.REMOVE()
+
+    else: print("wrong entry")
 
 
 
 if __name__ == "__main__":
     main()
+    input()
