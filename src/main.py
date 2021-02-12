@@ -47,6 +47,7 @@ def main():
     if command == '1':
         print("enter product name or id")
         productID = input('$ ')
+        print("")
         product.ABOUT(productID)
 
     elif command == '2':
