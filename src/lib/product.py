@@ -28,7 +28,11 @@ class product:
             ...
     
     def DISPLAY_ALL(self):
-        ...
+        self.cursor.execute("select * from products")
+        
+        print("id\tname\t\tprice\t\tquantity\n")
+        for row in self.cursor.fetchall():
+            print(f'{row[0]}\t{row[1]}\t\t{row[2]}\t\t{row[3]}')
 
     def CREATE(self, name, price, quantity):
         lastRowID = self.cursor.execute('select * from products').fetchall()[-1][0]
