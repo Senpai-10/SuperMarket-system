@@ -15,8 +15,9 @@ product class
 """
 
 class product:
-    def __init__(self, cursor):
+    def __init__(self, cursor, conn):
         self.cursor = cursor
+        self.conn = conn
 
     def ABOUT(self, productID):
         if type(productID) == int:
@@ -30,8 +31,8 @@ class product:
         ...
 
     def CREATE(self, name, price, quantity):
-        lastRowID = cursor.execute('select * from products').fetchall()[-1][0]
-    
+        lastRowID = self.cursor.execute('select * from products').fetchall()[-1][0]
+
     def UPDATE(self):
         ...
 
