@@ -1,9 +1,15 @@
 import sqlite3
+from lib.product import product
+from lib.color import color
 
 
 conn = sqlite3.connect('SuperMarket')
-
 cursor = conn.cursor()
+
+color = color()
+product = product(cursor)
+
+
 
 # cursor.execute("""CREATE TABLE products (
 #     id integer primary key,
@@ -12,10 +18,24 @@ cursor = conn.cursor()
 #     quantity integer
 # )""")
 
-# cursor.execute("INSERT INTO products VALUES (2, 'test2', 123, 200)")
+# cursor.execute("INSERT INTO products VALUES (2, 'test23', 123, 200)")
 
-cursor.execute("SELECT * FROM products")
+def menu():
+    print(f"""
+1. ABOUT          : about product
+2. DISPLAY ALL    : display all products
+3. CREATE         : create new product  
+4. UPDATE         : update product info
+5. REMOVE         : remove product
 
-print(cursor.fetchone())
+! enter option number.
+    """)
 
-conn.commit()
+def main():
+    menu()
+    command = input(color.lightGrey("$ "))
+
+
+
+if __name__ == "__main__":
+    main()
