@@ -23,7 +23,10 @@ product = product(cursor, conn)
 
 
 def clear():
-    ...
+    if os.name == 'nt':
+        os.system("cls")
+    else:
+        os.system("clear")
 
 def menu():
     print(f"""
@@ -42,7 +45,9 @@ def main():
     print("")
     
     if command == '1':
-        product.ABOUT()
+        print("enter product name or id")
+        productID = input('$ ')
+        product.ABOUT(productID)
 
     elif command == '2':
         product.DISPLAY_ALL()
@@ -52,6 +57,7 @@ def main():
         price    = input('product price    $ ')
         quantity = input('product quantity $ ')
         product.CREATE(name=name, price=price, quantity=quantity)
+        
     
     elif command == '4':
         product.UPDATE()
@@ -61,8 +67,13 @@ def main():
 
     else: print("wrong entry")
 
+def run():
+    if __name__ == "__main__":
+        main()
+        print("\n0. back\n")
+        command = input(color.lightGrey("$ "))
+        if command == '0':
+            clear()
+            run()
 
-
-if __name__ == "__main__":
-    main()
-    input()
+run()
