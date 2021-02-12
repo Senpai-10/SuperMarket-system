@@ -7,8 +7,8 @@ product class
 
     get using:name
 
-        get_price
-        get_quantity
+        get_price     by: name ? id
+        get_quantity  by: name ? id
 
 """
 
