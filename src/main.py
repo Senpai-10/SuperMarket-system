@@ -1,4 +1,5 @@
 import sqlite3
+import os
 from lib.product import product
 from lib.color import color
 
@@ -20,6 +21,10 @@ product = product(cursor, conn)
 
 # cursor.execute("INSERT INTO products VALUES (2, 'test23', 123, 200)")
 
+
+def clear():
+    ...
+
 def menu():
     print(f"""
 1. ABOUT          : about product
@@ -34,9 +39,10 @@ def menu():
 def main():
     menu()
     command = input(color.lightGrey("$ "))
+    print("")
     
     if command == '1':
-        # product.ABOUT()
+        product.ABOUT()
 
     elif command == '2':
         product.DISPLAY_ALL()
@@ -48,10 +54,10 @@ def main():
         product.CREATE(name=name, price=price, quantity=quantity)
     
     elif command == '4':
-        # product.UPDATE()
+        product.UPDATE()
     
     elif command == '5':
-        # product.REMOVE()
+        product.REMOVE()
 
     else: print("wrong entry")
 
