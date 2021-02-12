@@ -41,8 +41,9 @@ def main():
     menu()
     command = input(color.lightGrey("$ "))
     print("")
-    
-    if command == '1':
+
+
+    elif command == '1':
         print("enter product name or id")
         productID = input('$ ')
         print("")
