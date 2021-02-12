@@ -1,5 +1,6 @@
 .todo
 SuperMarket
+src/lib/__pycache__
 db/*
 
 # Prerequisites
