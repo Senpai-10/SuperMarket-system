@@ -20,13 +20,20 @@ class product:
         self.conn = conn
 
     def ABOUT(self, productID):
-        if type(productID) == int:
-            # get by id number
-            ...
-        else:
-            # get by name
-            ...
-    
+        try:
+            productID = int(productID)
+            self.cursor.execute(f"select * from products where id = :id", {'id': productID})
+            print("id\tname\t\tprice\t\tquantity\n")
+            row = self.cursor.fetchone()
+            print(f'{row[0]}\t{row[1]}\t\t{row[2]}\t\t{row[3]}')
+
+        except ValueError:
+            self.cursor.execute(f"select * from products where name = :name", {'name': productID})
+            print("id\tname\t\tprice\t\tquantity\n")
+            row = self.cursor.fetchone()
+            print(f'{row[0]}\t{row[1]}\t\t{row[2]}\t\t{row[3]}')
+
+
     def DISPLAY_ALL(self):
         self.cursor.execute("select * from products")
         
