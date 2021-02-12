@@ -18,8 +18,24 @@ class product:
     def __init__(self, cursor, conn):
         self.cursor = cursor
         self.conn = conn
+    
+    def sort(self):
+        self.cursor.execute("select * from products")
+        print(self.cursor.fetchall())
+
+        self.cursor.execute("select * from products")
+
+        i = 1
+        for column in self.cursor.fetchall():
+            if i == column[0]: ...
+            else: 
+                self.cursor.execute("UPDATE products SET id = :newid  WHERE id = :id", {'newid': i, 'id': column[0]})
+                self.conn.commit()
+
+            i += 1
 
     def ABOUT(self, productID):
+        self.sort()
         try:
             productID = int(productID)
             self.cursor.execute(f"select * from products where id = :id", {'id': productID})
@@ -35,6 +51,7 @@ class product:
 
 
     def DISPLAY_ALL(self):
+        self.sort()
         self.cursor.execute("select * from products")
         
         print("id\tname\t\tprice\t\tquantity\n")
@@ -42,6 +59,7 @@ class product:
             print(f'{row[0]}\t{row[1]}\t\t{row[2]}\t\t{row[3]}')
 
     def CREATE(self, name, price, quantity):
+        self.sort()
         try:
             rowID = self.cursor.execute('select * from products').fetchall()[-1][0] + 1
         except IndexError:
@@ -51,6 +69,7 @@ class product:
         self.conn.commit()
 
     def UPDATE(self):
+        self.sort()
         print("""
 1. UPDATE NAME      : update product name 
 2. UPDATE PRICE     : update product price
@@ -95,16 +114,18 @@ class product:
         else: print("wrong entry")
 
     def REMOVE(self):
+        self.sort()
         print("enter product ( id ) or ( all|ALL )")
         productID = input("$ ")
         print("")
 
-        if productID == 'all' or 'ALL':
-            self.cursor.execute("select * from products")
-            for row in self.cursor.fetchall():
-                self.cursor.execute("DELETE from products where id = :id", {'id': row[0]})
+        # if productID == 'all' or 'ALL':
+        #     self.cursor.execute("select * from products")
+        #     for row in self.cursor.fetchall():
+        #         self.cursor.execute("DELETE from products where id = :id", {'id': row[0]})
 
-        else: self.cursor.execute("DELETE from products where id = :id", {'id': productID})
+        # else: 
+        self.cursor.execute("DELETE from products where id = :id", {'id': productID})
 
         self.conn.commit()
 
