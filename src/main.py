@@ -31,7 +31,7 @@ def menu():
 1. ABOUT          : about product
 2. DISPLAY ALL    : display all products
 3. CREATE         : create new product  
-4. UPDATE         : update product info
+4. UPDATE         : update product data
 5. REMOVE         : remove product
 
 ! enter option number.
