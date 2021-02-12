@@ -12,14 +12,12 @@ product = product(cursor, conn)
 
 
 
-# cursor.execute("""CREATE TABLE products (
-#     id integer primary key,
-#     name text,
-#     price integer,
-#     quantity integer
-# )""")
-
-# cursor.execute("INSERT INTO products VALUES (2, 'test23', 123, 200)")
+cursor.execute("""CREATE TABLE IF NOT EXISTS products (
+    id integer primary key,
+    name text,
+    price integer,
+    quantity integer
+)""")
 
 
 def clear():
