@@ -1,9 +1,11 @@
 """
 product class
-
-    CREATE product
-    UPDATE product
-    REMOVE product
+    
+    ABOUT        product
+    DISPLAY ALL  product
+    CREATE       product
+    UPDATE       product
+    REMOVE       product
 
     get using:name
 
@@ -13,8 +15,22 @@ product class
 """
 
 class product:
-    def CREATE(self, name, price, quantity):
+    def __init__(self, cursor):
+        self.cursor = cursor
+
+    def ABOUT(self, productID):
+        if type(productID) == int:
+            # get by id number
+            ...
+        else:
+            # get by name
+            ...
+    
+    def DISPLAY_ALL(self):
         ...
+
+    def CREATE(self, name, price, quantity):
+        lastRowID = cursor.execute('select * from products').fetchall()[-1][0]
     
     def UPDATE(self):
         ...
@@ -23,18 +39,22 @@ class product:
         ...
 
 
-    def get_price_by_name(self, name):
-        ...
+    def get_price(self, productID):
+        if type(productID) == int:
+            # get by id number
+            ...
+        else:
+            # get by name
+            ...
 
-    def get_price_by_id(self, id):
-        ...
 
-
-    def get_quantity_by_name(self, name):
-        ...
-
-    def get_quantity_by_id(self, id):
-        ...
+    def get_quantity(self, productID):
+        if type(productID) == int:
+            # get by id number
+            ...
+        else:
+            # get by name
+            ...
 
 
 
