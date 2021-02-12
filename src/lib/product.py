@@ -42,7 +42,13 @@ class product:
             print(f'{row[0]}\t{row[1]}\t\t{row[2]}\t\t{row[3]}')
 
     def CREATE(self, name, price, quantity):
-        lastRowID = self.cursor.execute('select * from products').fetchall()[-1][0]
+        try:
+            rowID = self.cursor.execute('select * from products').fetchall()[-1][0] + 1
+        except IndexError:
+            rowID = 1
+
+        self.cursor.execute("INSERT INTO products VALUES (:id, :name, :price, :quantity)", {'id': rowID, 'name': name, 'price': price, 'quantity': quantity})
+        self.conn.commit()
 
     def UPDATE(self):
         ...
