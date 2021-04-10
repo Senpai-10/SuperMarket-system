@@ -2,7 +2,7 @@
 
 <br>
 
-### Super Market Admin system 
+### Supermarket management
 
 <br>
 
