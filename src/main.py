@@ -42,7 +42,7 @@ def main():
     command = input(color.lightGrey("$ "))
     print("")
 
-    elif command == '1':
+    if command == '1':
         print("enter product name or id")
         productID = input('$ ')
         print("")
